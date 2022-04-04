@@ -20,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MyObservatoryStepDefs {
 
+    int wait = 10;
     AppiumDriver<MobileElement> driver;
     private static final String  BASE_URL = "http://localhost:4723/wd/hub";
     private static final String  DEVICE_NAME = "emulator-5554";
@@ -30,6 +31,7 @@ public class MyObservatoryStepDefs {
     private static final String  APP_PACKAGE = "hko.MyObservatory_v1_0";
     private static final String  APP_ACTIVITY = "hko.MyObservatory_v1_0.AgreementPage";
     private static final String  AGREE_BUTTON = ":id/btn_agree";
+    private static final String  BUTTON_1 = ":id/button1";
 
     @Given("The app is open")
     public void the_app_is_open() throws MalformedURLException {
@@ -51,16 +53,16 @@ public class MyObservatoryStepDefs {
         el2.click();
         MobileElement el3 = driver.findElementById(APP_PACKAGE+AGREE_BUTTON);
         el3.click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        MobileElement el4 = driver.findElementById("android:id/button1");
+        driver.manage().timeouts().implicitlyWait(wait, TimeUnit.SECONDS);
+        MobileElement el4 = driver.findElementById(ANDROID + BUTTON_1);
         el4.click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(wait, TimeUnit.SECONDS);
         MobileElement el5 = driver.findElementById("com.android.permissioncontroller:id/permission_allow_foreground_only_button");
         el5.click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(wait, TimeUnit.SECONDS);
         MobileElement el6 = driver.findElementByAccessibilityId("Close");
         el6.click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(wait, TimeUnit.SECONDS);
         MobileElement el7 = driver.findElementByAccessibilityId("Navigate up");
         el7.click();
 
@@ -79,17 +81,21 @@ public class MyObservatoryStepDefs {
                 .moveTo(PointOption.point(endx,endy)).release().perform();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        MobileElement el8 = driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.ListView/android.widget.LinearLayout[7]");
+        MobileElement el8 = driver
+                .findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.ListView/android.widget.LinearLayout[7]");
         el8.click();
 
     }
 
     @Then("I see the 9 Day Forecast Page")
     public void iSeeTheNineDayForecastPage() {
-        Assert.assertEquals(driver.findElementByXPath("//android.widget.LinearLayout[@content-desc=\"9-Day Forecast\"]/android.widget.TextView").getText(),"9-Day Forecast");
+        Assert.assertEquals(driver
+                .findElementByXPath("//android.widget.LinearLayout[@content-desc=\"9-Day Forecast\"]/android.widget.TextView")
+                .getText(),"9-Day Forecast");
     }
 
     @Then("I see the forecast for the next 9 days")
     public void i_see_the_forecast_for_the_next_days() {
     }
+
 }
