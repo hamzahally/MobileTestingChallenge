@@ -10,10 +10,10 @@ Tech used:
 
 How to run a test:
 
-1. Start Android Studio with Android Emulation, I used a Google Pixel 3 as it gave me access to the google play store
+1. Start Android Studio with Android Emulation, I used a Google Pixel 3 as it gave me access to the google play store to install application
 2. Start the Appium Server (GUI v1.22)
-3. Test can be run from feature file play button
+3. Test can be run from NineDayForecast.feature
 
-Locate the appPackage and appActivity for MyObservatory
+For Test development -> Locate the appPackage and appActivity for MyObservatory
 1. Use the APKFinder app on Google play store
 2. Use this for Appium inspector for starting the session

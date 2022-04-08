@@ -66,6 +66,7 @@ public class Steps {
         MobileElement el7 = driver.findElementByAccessibilityId("Navigate up");
         el7.click();
 
+        // finds the dimensions of the smartphone window and provides the scrollable area
         Dimension dim = driver.manage().window().getSize();
         int startx = (int) (dim.width * 0.2);
         int starty = (int) (dim.height * 0.7);
@@ -73,7 +74,7 @@ public class Steps {
         int endx = (int) (dim.width * 0.2);
         int endy = (int) (dim.height * 0.2);
 
-        // was necessary for automation, other methods were failing and causing flakiness
+        // was necessary for automation, other methods for pausing were failing and causing flakiness
         Thread.sleep(2000);
 
         TouchAction touch = new TouchAction(driver);
