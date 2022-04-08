@@ -34,7 +34,7 @@ public class Steps {
     private static final String  BUTTON_1 = ":id/button1";
 
     @Given("The app is open")
-    public void the_app_is_open() throws MalformedURLException {
+    public void theAppIsOpen() throws MalformedURLException {
             DesiredCapabilities dc = new DesiredCapabilities();
             dc.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
             dc.setCapability(PLATFORM_NAME, ANDROID);
@@ -48,7 +48,7 @@ public class Steps {
     }
 
     @When("I navigate to the 9 Day Forecast Page")
-    public void i_navigate_to_the_day_forecast_page() throws InterruptedException {
+    public void navigateToNineDayForecastPage() throws InterruptedException {
         MobileElement el2 = driver.findElementById(APP_PACKAGE+AGREE_BUTTON);
         el2.click();
         MobileElement el3 = driver.findElementById(APP_PACKAGE+AGREE_BUTTON);
@@ -73,6 +73,7 @@ public class Steps {
         int endx = (int) (dim.width * 0.2);
         int endy = (int) (dim.height * 0.2);
 
+        // was necessary for automation, other methods were failing and causing flakiness
         Thread.sleep(2000);
 
         TouchAction touch = new TouchAction(driver);
@@ -88,7 +89,7 @@ public class Steps {
     }
 
     @Then("I see the 9 Day Forecast Page")
-    public void iSeeTheNineDayForecastPage() {
+    public void checkNineDayForecastPage() {
         Assert.assertEquals(driver
                 .findElementByXPath("//android.widget.LinearLayout[@content-desc=\"9-Day Forecast\"]/android.widget.TextView")
                 .getText(),"9-Day Forecast");
