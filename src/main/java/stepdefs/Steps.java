@@ -18,7 +18,7 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public class MyObservatoryStepDefs {
+public class Steps {
 
     int wait = 10;
     AppiumDriver<MobileElement> driver;
@@ -92,10 +92,6 @@ public class MyObservatoryStepDefs {
         Assert.assertEquals(driver
                 .findElementByXPath("//android.widget.LinearLayout[@content-desc=\"9-Day Forecast\"]/android.widget.TextView")
                 .getText(),"9-Day Forecast");
-    }
-
-    @Then("I see the forecast for the next 9 days")
-    public void i_see_the_forecast_for_the_next_days() {
     }
 
 }
